@@ -17,10 +17,14 @@ const Home = () => {
 
         <div id="cards-main">
           <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
         </div>
       </div>
     </>
   )
 }
 
-export default Home
+export default Home;
