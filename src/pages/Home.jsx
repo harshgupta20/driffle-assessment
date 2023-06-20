@@ -5,6 +5,7 @@ import "../styles/Home.css";
 import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import Card from "../components/Card";
+import AddModal from '../components/AddModal';
 
 const Home = () => {
   return (
@@ -22,6 +23,8 @@ const Home = () => {
           <Card/>
           <Card/>
         </div>
+
+        <AddModal/>
       </div>
     </>
   )
