@@ -1,0 +1,23 @@
+#search-main{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: aliceblue;
+
+    border-radius: 10px;
+}
+#search-img{
+    width: 20px;
+    height: 20px;
+    
+    mix-blend-mode: multiply;
+}
+#searchbar{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: aliceblue;
+
+    font-size: large;
+}
