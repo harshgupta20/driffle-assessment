@@ -37,7 +37,7 @@ const Home = () => {
         </div>
 
         <div id="cards-main">
-          <Card/>
+          {/* <Card/> */}
           {
             notesData ? notesData.map((note) => {return <Card title={note.title} desc={note.desc} date={note.date} id={note.id}/>}) : <h1>No Notes Available</h1>
           }

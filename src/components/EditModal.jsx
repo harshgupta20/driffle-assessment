@@ -1,21 +1,54 @@
 import { Box, Button, Modal, Typography } from '@mui/material'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-const EditModal = ({handleOpen, open, setOpen, title, desc, date}) => {
+// STYLES
+import "../styles/EditModal.css";
+
+// DRIFFLE LOGO
+import LOGO from "../assets/driffle-logo.png";
+import { AppContext } from '../App';
+
+const EditModal = ({open, setOpen, title, desc, date, id}) => {
 
   // const [open, setOpen] = useState(false);
   // const handleOpen = () => setOpen(true);
+
+  const [notesData, setNotesData] = useState();
+
+  // CONTEXT
+  const {update, setUpdate} = useContext(AppContext);
+
+  const editDataInStorage = () => {
+    // Mapping the LocalStorage Array
+    notesData.map((data) => {
+      // Checking if the id of the data matches with the id of the note to be edited
+      if (data.id === id) {
+        // If the id matches then the data is updated
+        data.title = document.getElementById('edit-modal-title').value;
+        data.desc = document.getElementById('edit-modal-textarea').value;
+        data.date = new Date().toLocaleDateString();
+        data.time = new Date().toLocaleTimeString();
+      }
+    })
+
+    // Updating the LocalStorage
+    localStorage.setItem('notesData', JSON.stringify(notesData));
+
+    // Closing the Modal
+    handleClose();
+
+    // Updating the Context
+    setUpdate(!update);
+  }
+
+
+  useEffect(() => {
+    // Defining the notesData State
+    setNotesData(JSON.parse(localStorage.getItem('notesData')));
+  },[])
+
+  console.log(notesData);
+
   const handleClose = () => setOpen(false);
   return (
     <>
@@ -25,14 +58,14 @@ const EditModal = ({handleOpen, open, setOpen, title, desc, date}) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {title}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-           {desc}
-          </Typography>
-        </Box>
+        <div id="edit-modal-main">
+          <div id="edit-modal-data">
+            <h3 id="edit-modal-heading"><img src={LOGO} style={{ width: "30px", backgroundColor: "#212121", marginRight: "20px" }} alt="" />edit Note</h3>
+            <input type="text" name="title" placeholder={title} id="edit-modal-title" />
+            <textarea name="" cols="30" rows="10" id="edit-modal-textarea" placeholder={desc}></textarea>
+            <button onClick={editDataInStorage} id="edit-modal-btn">+ edit Note</button>
+          </div>
+        </div>
       </Modal>
     </>
   )

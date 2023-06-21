@@ -8,6 +8,7 @@ const Card = ({title, desc, date, id}) => {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+  
 
  return (
     <>
@@ -24,7 +25,9 @@ const Card = ({title, desc, date, id}) => {
       </div>
 
       {/* EDIT MODAL */}
-      <EditModal handleOpen={handleOpen} open={open} setOpen={setOpen} title={title} desc={desc} date={date} />
+      {
+        open && <EditModal handleOpen={handleOpen} open={open} setOpen={setOpen} title={title} desc={desc} date={date} id={id} />
+      }
     </>
   )
 }
