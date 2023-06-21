@@ -18,29 +18,18 @@ const DeleteModal = ({deleteOpen, setDeleteOpen, title, desc, date, id}) => {
 
     //Modal Close Function
     const deleteHandleClose = () => setDeleteOpen(false);
-
-
+    
+    
+    // console.log(notesData);
     const deleteDataStorage = () => {
-
-        // index of the note to be deleted
-        var dataIndex = 0;
-        var count = 0;
-        // Mapping the LocalStorage Array
-        notesData.map((data, key) => {
-            // Checking if the id of the data matches with the id of the note to be edited
-            if (data.id === id) {
-                dataIndex = count;
-            }
-            count++;
-        })
         
-
-        // Deleting the note from the notesData Array
-        notesData.splice(dataIndex, 1);
-
+        const filteredData = notesData.filter((item) => {return item.id !== id});
+        
+        console.log("ye raha");
+        console.log(filteredData);
         // Updating the LocalStorage
-        localStorage.setItem('notesData', JSON.stringify(notesData));
-
+        localStorage.setItem('notesData', JSON.stringify(filteredData));
+        setNotesData(filteredData);
         // Closing the Modal
         deleteHandleClose();
 
@@ -48,12 +37,10 @@ const DeleteModal = ({deleteOpen, setDeleteOpen, title, desc, date, id}) => {
         setUpdate(!update);
     }
 
-
-
     useEffect(() => {
         // Defining the notesData State
         setNotesData(JSON.parse(localStorage.getItem('notesData')));
-    },[])
+    },[notesData])
 
 
     return (
