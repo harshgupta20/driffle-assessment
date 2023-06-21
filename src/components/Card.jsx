@@ -4,24 +4,18 @@ import "../styles/Card.css";
 //COMPONENTS
 import EditModal from './EditModal';
 
-const Card = () => {
+const Card = ({title, desc, date, id}) => {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
 
-  const data = {
-    title: "My First Blog",
-    desc: "lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab cum maiores aliquam error veniam debitis et quaerat, modi consequatur velit eos atque ipsam corrupti necessitatibus quibusdam assumenda distinctio similique quidem!",
-    date: "20-june-2023"
-  }
-
-  return (
+ return (
     <>
       <div id="card-main">
         <div id="card-data">
-          <h3 id="card-title" className='card-bg'>{data.title}</h3>
-          <p id="card-desc" className='card-bg'>{data.desc}</p>
-          <p id="card-date" className='card-bg'>Date : {data.date}</p>
+          <h3 id="card-title" className='card-bg'>{title}</h3>
+          <p id="card-desc" className='card-bg'>{desc}</p>
+          <p id="card-date" className='card-bg'>Date : {date}</p>
         </div>
         <div id="card-btn">
           <button id="card-btn-edit" className='card-btn-all' onClick={handleOpen}>&#9998; Edit</button>
@@ -30,7 +24,7 @@ const Card = () => {
       </div>
 
       {/* EDIT MODAL */}
-      <EditModal handleOpen={handleOpen} open={open} setOpen={setOpen} title={data.title} desc={data.desc} date={data.date} />
+      <EditModal handleOpen={handleOpen} open={open} setOpen={setOpen} title={title} desc={desc} date={date} />
     </>
   )
 }
