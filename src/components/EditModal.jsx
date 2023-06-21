@@ -1,4 +1,4 @@
-import { Box, Button, Modal, Typography } from '@mui/material'
+import {  Modal } from '@mui/material'
 import { useContext, useEffect, useState } from 'react'
 
 // STYLES

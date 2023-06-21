@@ -3,47 +3,50 @@ import "../styles/Home.css";
 
 // COMPONENTS
 import Navbar from "../components/Navbar";
-import SearchBar from "../components/SearchBar";
 import Card from "../components/Card";
 import AddModal from '../components/AddModal';
 import { AppContext } from '../App';
 
+import SearchImage from "../assets/search-icon.jpg";
+
 const Home = () => {
 
   const [notesData, setNotesData] = useState();
+  const [simpleSearch, setSimpleSearch] = useState("");
 
   //CONTEXT
-  const {update, setUpdate} = useContext(AppContext);
+  const { update } = useContext(AppContext);
 
   useEffect(() => {
     document.title = "Home | Driffle Notes"
-    
-    if(localStorage.getItem('notesData')){
+
+    if (localStorage.getItem('notesData')) {
       setNotesData(JSON.parse(localStorage.getItem('notesData')));
     }
-    // console.log(update);
-    // console.log("useEffect Home");
   }, [update])
 
 
-  // console.log(notesData);
 
   return (
     <>
       <Navbar />
       <div id="home-main">
         <div id="home-searchBar">
-          <SearchBar />
+          <div id="search-main">
+            <img id="search-img" src={SearchImage} alt="searchIcon" />
+            <input id="searchbar" onChange={e => setSimpleSearch(e.target.value)} type="text" placeholder='Search with "title"' />
+          </div>
         </div>
 
         <div id="cards-main">
           {/* <Card/> */}
-          {
-            notesData ? notesData.map((note) => {return <Card title={note.title} desc={note.desc} date={note.date} id={note.id}/>}) : <h1>No Notes Available</h1>
-          }
+  
+          {notesData ? notesData.filter(filterData => filterData.title.toLowerCase().includes(simpleSearch)).map((note) => (
+            <Card title={note.title} desc={note.desc} date={note.date} id={note.id} />
+          )) : ""}
         </div>
 
-        <AddModal/>
+        <AddModal />
       </div>
     </>
   )
