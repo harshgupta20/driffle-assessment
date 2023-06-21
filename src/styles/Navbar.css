@@ -1,4 +1,23 @@
 #nav-main{
     background-color: #212121;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#nav-logo{
+    background-color: #212121;
+}
+#nav-btn-add{
+    background-color: #212121;
+    color: #477BFF;
+    border: 1px solid #477BFF;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#nav-btn-add:hover{
+    background-color: #477BFF;
+    color: aliceblue;
 }

@@ -24,8 +24,8 @@ const Card = () => {
           <p id="card-date" className='card-bg'>Date : {data.date}</p>
         </div>
         <div id="card-btn">
-          <button id="card-btn-edit" className='card-btn-all' onClick={handleOpen}>Edit</button>
-          <button id="card-btn-delete" className='card-btn-all'>Delete</button>
+          <button id="card-btn-edit" className='card-btn-all' onClick={handleOpen}>&#9998; Edit</button>
+          <button id="card-btn-delete" className='card-btn-all'>&#128465; Delete</button>
         </div>
       </div>
 

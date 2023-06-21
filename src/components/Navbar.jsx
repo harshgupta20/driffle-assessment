@@ -9,6 +9,7 @@ const Navbar = () => {
     <>
         <nav id="nav-main">
             <img id="nav-logo" src={Logo} alt="logo" />
+            <button id="nav-btn-add">+ Add Note</button>
         </nav>
     </>
   )
