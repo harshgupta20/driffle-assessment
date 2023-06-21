@@ -10,9 +10,6 @@ import { AppContext } from '../App';
 
 const EditModal = ({open, setOpen, title, desc, date, id}) => {
 
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-
   const [notesData, setNotesData] = useState();
 
   // CONTEXT
