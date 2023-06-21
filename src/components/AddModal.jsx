@@ -11,6 +11,7 @@ const AddModal = ({ open, setOpen }) => {
   
   //CONTEXT
   const {update, setUpdate} = useContext(AppContext);
+  
   //Modal Close Function
   const handleClose = () => setOpen(false);
   

@@ -21,12 +21,12 @@ const Home = () => {
     if(localStorage.getItem('notesData')){
       setNotesData(JSON.parse(localStorage.getItem('notesData')));
     }
-    console.log(update);
-    console.log("useEffect Home");
+    // console.log(update);
+    // console.log("useEffect Home");
   }, [update])
 
 
-  console.log(notesData);
+  // console.log(notesData);
 
   return (
     <>
