@@ -39,8 +39,6 @@ const Home = () => {
         </div>
 
         <div id="cards-main">
-          {/* <Card/> */}
-  
           {notesData ? notesData.filter(filterData => filterData.title.toLowerCase().includes(simpleSearch)).map((note) => (
             <Card title={note.title} desc={note.desc} date={note.date} id={note.id} />
           )) : ""}
