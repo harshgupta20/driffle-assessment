@@ -11,11 +11,13 @@ import { AppContext } from '../App';
 const EditModal = ({open, setOpen, title, desc, date, id}) => {
 
   const [notesData, setNotesData] = useState();
-
+  
   // CONTEXT
   const {update, setUpdate} = useContext(AppContext);
-
+  
   const editDataInStorage = () => {
+    
+    
     // Mapping the LocalStorage Array
     notesData.map((data) => {
       // Checking if the id of the data matches with the id of the note to be edited
@@ -27,28 +29,29 @@ const EditModal = ({open, setOpen, title, desc, date, id}) => {
         data.time = new Date().toLocaleTimeString();
       }
     })
-
+    
     // Updating the LocalStorage
     localStorage.setItem('notesData', JSON.stringify(notesData));
-
+    
     // Closing the Modal
     handleClose();
-
+    
     // Updating the Context
     setUpdate(!update);
   }
-
-
+  
   useEffect(() => {
     // Defining the notesData State
     setNotesData(JSON.parse(localStorage.getItem('notesData')));
   },[])
-
-  console.log(notesData);
-
+  
+  // Defining the Modal State
   const handleClose = () => setOpen(false);
+
+
   return (
     <>
+    {/* // MODAL */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -57,9 +60,12 @@ const EditModal = ({open, setOpen, title, desc, date, id}) => {
       >
         <div id="edit-modal-main">
           <div id="edit-modal-data">
+            {/* // EDIT MODAL HEADING */}
             <h3 id="edit-modal-heading"><img src={LOGO} style={{ width: "30px", backgroundColor: "#212121", marginRight: "20px" }} alt="" />edit Note</h3>
+            {/* // EDIT MODAL INPUTS */}
             <input type="text" name="title" placeholder={title} id="edit-modal-title" />
             <textarea name="" cols="30" rows="10" id="edit-modal-textarea" placeholder={desc}></textarea>
+            {/* // EDIT MODAL BUTTON */}
             <button onClick={editDataInStorage} id="edit-modal-btn">+ edit Note</button>
           </div>
         </div>

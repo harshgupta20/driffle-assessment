@@ -18,11 +18,14 @@ const Card = ({title, desc, date, id}) => {
  return (
     <>
       <div id="card-main">
+        {/* // CARD DATA */}
         <div id="card-data">
           <h3 id="card-title" className='card-bg'>{title}</h3>
           <p id="card-desc" className='card-bg'>{desc}</p>
           <p id="card-date" className='card-bg'>Date : {date}</p>
         </div>
+
+        {/* // CARD BUTTONS */}
         <div id="card-btn">
           <button id="card-btn-edit" className='card-btn-all' onClick={handleOpen}>&#9998; Edit</button>
           <button id="card-btn-delete" className='card-btn-all' onClick={deleteHandleOpen}>&#128465; Delete</button>

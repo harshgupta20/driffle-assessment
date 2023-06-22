@@ -53,10 +53,13 @@ const DeleteModal = ({deleteOpen, setDeleteOpen, title, desc, date, id}) => {
             >
                 <div id="delete-modal-main">
                     <div id="delete-modal-data">
+                        {/* // MODAL DATA  */}
                         <h3 id="delete-modal-heading"><img src={LOGO} style={{ width: "30px", backgroundColor: "#212121", marginRight: "20px" }} alt="logo" />Confirm <span style={{color:"rgb(177, 60, 60)",  backgroundColor: "#212121",}}>Delete</span> ?</h3>
                         <i id="delete-modal-i">Once deleted then can't be restore <sup>*</sup></i>
+                        {/* // MODAL INPUTS */}
                         <input type="text" value={title} name="title" placeholder='Title...' id="delete-modal-title" />
                         <textarea value={desc} cols="30" rows="10" id="delete-modal-textarea" placeholder='Desciption...'></textarea>
+                        {/* // MODAL BUTTONS */}
                         <button onClick={deleteDataStorage} id="delete-modal-btn">Delete</button>
                     </div>
                 </div>
